@@ -1,0 +1,38 @@
+        <subsystem xmlns="urn:jboss:domain:resource-adapters:4.0">
+            <resource-adapters>
+                <resource-adapter id="activemq-rar.rar">
+                    <archive>
+                        activemq-rar-5.15.0.rar
+                    </archive>
+                    <transaction-support>NoTransaction</transaction-support>
+                    <config-property name="ServerUrl">
+                        vm://localhost?brokerConfig=xbean:broker-config.xml
+                    </config-property>
+                    <config-property name="AllPrefetchValues">
+                        100
+                    </config-property>
+                    <config-property name="UseInboundSession">
+                        false
+                    </config-property>
+                    <connection-definitions>
+                        <connection-definition class-name="org.apache.activemq.ra.ActiveMQManagedConnectionFactory" jndi-name="java:jboss/exported/ConnectionFactory" enabled="true" use-java-context="true" pool-name="ConnectionFactory">
+                            <pool>
+                                <min-pool-size>20</min-pool-size>
+                                <max-pool-size>100</max-pool-size>
+                            </pool>
+                            <timeout>
+                                <blocking-timeout-millis>30000</blocking-timeout-millis>
+                                <idle-timeout-minutes>15</idle-timeout-minutes>
+                            </timeout>
+                        </connection-definition>
+                    </connection-definitions>
+                </resource-adapter>
+            </resource-adapters>
+        </subsystem>
+		
+		and , under ejb:
+		
+           <mdb>
+                <resource-adapter-ref resource-adapter-name="activemq-rar.rar"/>
+                <bean-instance-pool-ref pool-name="mdb-strict-max-pool"/>
+            </mdb>
