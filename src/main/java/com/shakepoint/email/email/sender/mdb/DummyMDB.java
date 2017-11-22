@@ -12,7 +12,7 @@ import javax.jms.MessageListener;
 
 import org.apache.log4j.Logger;
 
-import com.shakepoint.email.email.sender.jms.JmsUtils;
+import com.shakepoint.integration.jms.client.utils.JmsUtils;
 
 @TransactionManagement(TransactionManagementType.BEAN)
 @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)

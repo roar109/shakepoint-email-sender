@@ -5,7 +5,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Response;
 
-import com.shakepoint.email.email.sender.jms.JmsHandler;
+import com.shakepoint.integration.jms.client.handler.JmsHandler;
 
 @Path("dummy")
 public class DummyResource {
