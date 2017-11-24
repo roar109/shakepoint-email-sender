@@ -52,6 +52,18 @@
 			<artifactId>freemarker</artifactId>
 			<version>2.3.27-incubating</version>
 		</dependency>
+
+		<dependency>
+			<groupId>com.amazonaws</groupId>
+			<artifactId>aws-java-sdk</artifactId>
+			<version>1.11.235</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.github.roar109</groupId>
+			<artifactId>syring</artifactId>
+			<version>1.0.1</version>
+		</dependency>
 	</dependencies>
 
 	<build>

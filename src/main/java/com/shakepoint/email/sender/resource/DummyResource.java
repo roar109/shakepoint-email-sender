@@ -20,15 +20,18 @@ public class DummyResource {
 	@GET
 	@Path("queue")
 	public Response triggerDummyQueue() {
-		Email e = new Email();
-		e.setSubject("Randome subjct");
-		e.setTemplateName("example1");
-		e.setTo("roar109@gmail.com");
-		Map<String, Object> strings =  new HashMap<String, Object>();
-		strings.put("name", "vale nombre");
-		e.setVariables(strings);
-		
-		jmsHandler.send("shakepoint.integration.email.send",e.toJson());
+		for(int i = 0; i<1;i++){
+			Email e = new Email();
+			e.setSubject("Random subject just for testing - "+i);
+			e.setTemplateName("example1");
+			e.setTo("roar109@gmail.com");
+			Map<String, Object> strings =  new HashMap<String, Object>();
+			strings.put("name", "Hector "+i);
+			e.setVariables(strings);
+			
+			jmsHandler.send("shakepoint.integration.email.send", e.toJson());
+		}
+
 		return Response.ok("ok").build();
 	}
 

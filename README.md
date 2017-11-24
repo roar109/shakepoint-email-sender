@@ -8,3 +8,6 @@
 	
 ## System properties
 
+        <property name="aws.accessKeyId" value=""/>
+        <property name="aws.secretKey" value=""/>
+        <property name="aws.ses.default.from.email" value="shakepoint.supprt@gmail.com"/>

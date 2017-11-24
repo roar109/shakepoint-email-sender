@@ -10,6 +10,9 @@ import java.util.StringJoiner;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
+import javax.inject.Inject;
+
+import org.apache.log4j.Logger;
 
 import com.shakepoint.email.sender.template.exception.TemplateNotFoundException;
 
@@ -22,6 +25,9 @@ public class FreemarkerTemplateProvider implements TemplateProvider {
 
 	private Configuration cfg = null;
 	private final String TEMPLATE_EXTENTION = "ftlh";
+	
+	@Inject
+	private Logger log;
 
 	@PostConstruct
 	public void setup() {
@@ -30,11 +36,12 @@ public class FreemarkerTemplateProvider implements TemplateProvider {
 		// Specify the source where the template files come from. Here I set a
 		// plain directory for it, but non-file-system sources are possible too:
 		try {
-			// TODO pull from system props
 			cfg.setDirectoryForTemplateLoading(new File(createTemplateFolderPath()));
+			//Check for template updates each 5min
+			cfg.setTemplateUpdateDelayMilliseconds(60*5*1000);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			log.error(e.getMessage(), e);
+			throw new RuntimeException(e);
 		}
 
 		// Set the preferred charset template files are stored in. UTF-8 is
@@ -53,6 +60,7 @@ public class FreemarkerTemplateProvider implements TemplateProvider {
 		// Wrap unchecked exceptions thrown during template processing into
 		// TemplateException-s.
 		cfg.setWrapUncheckedExceptions(true);
+		
 	}
 
 	public String parseTemplate(String templateName, Map<String, Object> parameters) throws TemplateNotFoundException {
