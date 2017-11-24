@@ -1,4 +1,4 @@
-package com.shakepoint.email.email.sender.mdb;
+package com.shakepoint.email.sender.mdb;
 
 import javax.ejb.ActivationConfigProperty;
 import javax.ejb.MessageDriven;
@@ -12,19 +12,24 @@ import javax.jms.MessageListener;
 
 import org.apache.log4j.Logger;
 
+import com.shakepoint.integration.jms.client.utils.JmsUtils;
+
 @TransactionManagement(TransactionManagementType.BEAN)
 @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
-@MessageDriven(name = "EmailSenderMDB", activationConfig = {
-		@ActivationConfigProperty(propertyName = "destination", propertyValue = "shakepoint.integration.email.send"),
+@MessageDriven(name = "DummyMDB", activationConfig = {
+		@ActivationConfigProperty(propertyName = "destination", propertyValue = "dummyq"),
 		@ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue"),
 		@ActivationConfigProperty(propertyName = "acknowledgeMode", propertyValue = "Auto-acknowledge") })
-public class EmailSenderMDB  implements MessageListener{
+public class DummyMDB implements MessageListener {
 	
 	@Inject
 	private Logger log;
 
 	public void onMessage(Message message) {
-		log.info(message);
+		log.info("--------------------");
+		log.info(JmsUtils.getText(message));
+		// After getting the message we need, trigger a CDI event to handle it async
+		log.info("--------------------");
 	}
 
 }

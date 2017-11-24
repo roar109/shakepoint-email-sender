@@ -1,4 +1,4 @@
-package com.shakepoint.email.email.sender.resource;
+package com.shakepoint.email.sender.resource;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
