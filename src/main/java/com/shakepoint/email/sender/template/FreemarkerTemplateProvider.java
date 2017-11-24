@@ -55,7 +55,7 @@ public class FreemarkerTemplateProvider implements TemplateProvider {
 		cfg.setWrapUncheckedExceptions(true);
 	}
 
-	public String parseTemplate(String templateName, Map<String, String> parameters) throws TemplateNotFoundException {
+	public String parseTemplate(String templateName, Map<String, Object> parameters) throws TemplateNotFoundException {
 		try {
 			final Template template = cfg.getTemplate(createTemplateName(templateName));
 			final Writer stringWriter = new StringWriter();

@@ -24,7 +24,7 @@ public class DummyResource {
 		e.setSubject("Randome subjct");
 		e.setTemplateName("example1");
 		e.setTo("roar109@gmail.com");
-		Map<String, String> strings =  new HashMap<String, String>();
+		Map<String, Object> strings =  new HashMap<String, Object>();
 		strings.put("name", "vale nombre");
 		e.setVariables(strings);
 		

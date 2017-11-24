@@ -19,13 +19,14 @@ public class EmailManager {
 	private static final Gson GSON = new Gson();
 	
 	public void send(final String emailAsJson){
-		final Email email = GSON.fromJson(emailAsJson, Email.class);
-		
 		try {
+			final Email email = GSON.fromJson(emailAsJson, Email.class);
+			
 			final String body = templateProvider.parseTemplate(email.getTemplateName(), email.getVariables());
 			log.info(body);
 		} catch (Exception e) {
 			log.error(e.getMessage(), e);
+			//TODO log somewhere that we need to check why is failing
 		} 
 	}
 }

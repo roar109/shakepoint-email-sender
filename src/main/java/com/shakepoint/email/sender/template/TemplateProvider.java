@@ -7,5 +7,5 @@ import com.shakepoint.email.sender.template.exception.TemplateNotFoundException;
 
 public interface TemplateProvider {
 
-	String parseTemplate(final String templateName, final Map<String, String> parameters) throws TemplateNotFoundException;
+	String parseTemplate(final String templateName, final Map<String, Object> parameters) throws TemplateNotFoundException;
 }
