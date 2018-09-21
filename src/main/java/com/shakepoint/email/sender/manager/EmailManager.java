@@ -24,12 +24,10 @@ public class EmailManager {
 	
 	public void send(final String emailAsJson){
 		try {
-			log.info("Trying to send email...");
 			final Email email = GSON.fromJson(emailAsJson, Email.class);
 			
 			final String body = templateProvider.parseTemplate(email.getTemplateName(), email.getVariables());
 			clientProvider.send(email.getTo(), email.getSubject(), body);
-			log.info("Email sent");
 		} catch (Exception e) {
 			log.error(e.getMessage(), e);
 			//TODO log somewhere that we need to check why is failing
