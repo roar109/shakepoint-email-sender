@@ -39,6 +39,7 @@ public class SESClientProvider implements ClientProvider {
                 .withSource(FROM)
                 .withReplyToAddresses(FROM);
         SendEmailResult result = awsService.sendEmail(request);
+        log.info("-------------- Email details -----------------");
         log.info(String.format("Email ID: %s", result.getMessageId()));
         log.info(String.format("%s", result.getSdkResponseMetadata().toString()));
     }
