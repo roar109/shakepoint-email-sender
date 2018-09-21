@@ -12,20 +12,25 @@ import javax.jms.MessageListener;
 
 import com.shakepoint.web.email.sender.manager.EmailManager;
 import com.shakepoint.integration.jms.client.utils.JmsUtils;
+import org.apache.log4j.Logger;
 
 @TransactionManagement(TransactionManagementType.BEAN)
 @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
 @MessageDriven(name = "EmailSenderMDB", activationConfig = {
-		@ActivationConfigProperty(propertyName = "destination", propertyValue = "shakepoint.integration.email.send"),
-		@ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue"),
-		@ActivationConfigProperty(propertyName = "acknowledgeMode", propertyValue = "Auto-acknowledge") })
-public class EmailSenderMDB  implements MessageListener{
-	
-	@Inject
-	private EmailManager emailManager;
+        @ActivationConfigProperty(propertyName = "destination", propertyValue = "shakepoint.integration.email.send"),
+        @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue"),
+        @ActivationConfigProperty(propertyName = "acknowledgeMode", propertyValue = "Auto-acknowledge")})
+public class EmailSenderMDB implements MessageListener {
 
-	public void onMessage(Message message) {
-		emailManager.send(JmsUtils.getText(message));
-	}
+    @Inject
+    private EmailManager emailManager;
+
+    @Inject
+    private Logger log;
+
+    public void onMessage(Message message) {
+        log.info(message);
+        emailManager.send(JmsUtils.getText(message));
+    }
 
 }
