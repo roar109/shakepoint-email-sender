@@ -2,6 +2,7 @@ package com.shakepoint.email.sender.client;
 
 import javax.inject.Inject;
 
+import com.amazonaws.ResponseMetadata;
 import com.amazonaws.services.simpleemail.AmazonSimpleEmailService;
 import com.amazonaws.services.simpleemail.model.*;
 import com.github.roar109.syring.annotation.ApplicationProperty;
@@ -41,6 +42,7 @@ public class SESClientProvider implements ClientProvider {
         SendEmailResult result = awsService.sendEmail(request);
         log.info("-------------- Email details -----------------");
         log.info(String.format("Email ID: %s", result.getMessageId()));
-        log.info(String.format("%s", result.getSdkResponseMetadata().toString()));
+        ResponseMetadata responseMetadata = result.getSdkResponseMetadata();
+        log.info(String.format("%s", responseMetadata.getRequestId()));
     }
 }
