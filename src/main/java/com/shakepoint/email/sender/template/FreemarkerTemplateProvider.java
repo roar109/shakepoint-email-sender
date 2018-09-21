@@ -55,7 +55,7 @@ public class FreemarkerTemplateProvider implements TemplateProvider {
 
 		// Don't log exceptions inside FreeMarker that it will thrown at you
 		// anyway:
-		cfg.setLogTemplateExceptions(false);
+		cfg.setLogTemplateExceptions(true);
 
 		// Wrap unchecked exceptions thrown during template processing into
 		// TemplateException-s.
