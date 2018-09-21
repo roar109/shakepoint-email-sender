@@ -1,8 +1,8 @@
-package com.shakepoint.email.sender.template;
+package com.shakepoint.web.email.sender.template;
 
 import java.util.Map;
 
-import com.shakepoint.email.sender.template.exception.TemplateNotFoundException;
+import com.shakepoint.web.email.sender.template.exception.TemplateNotFoundException;
 
 
 public interface TemplateProvider {

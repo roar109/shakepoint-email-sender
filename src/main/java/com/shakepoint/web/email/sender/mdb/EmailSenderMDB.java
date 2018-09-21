@@ -1,4 +1,4 @@
-package com.shakepoint.email.sender.mdb;
+package com.shakepoint.web.email.sender.mdb;
 
 import javax.ejb.ActivationConfigProperty;
 import javax.ejb.MessageDriven;
@@ -10,7 +10,7 @@ import javax.inject.Inject;
 import javax.jms.Message;
 import javax.jms.MessageListener;
 
-import com.shakepoint.email.sender.manager.EmailManager;
+import com.shakepoint.web.email.sender.manager.EmailManager;
 import com.shakepoint.integration.jms.client.utils.JmsUtils;
 
 @TransactionManagement(TransactionManagementType.BEAN)

@@ -1,4 +1,4 @@
-package com.shakepoint.email.sender.client;
+package com.shakepoint.web.email.sender.client;
 
 import javax.inject.Inject;
 

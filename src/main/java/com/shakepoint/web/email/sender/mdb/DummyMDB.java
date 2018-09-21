@@ -1,4 +1,4 @@
-package com.shakepoint.email.sender.mdb;
+package com.shakepoint.web.email.sender.mdb;
 
 import javax.ejb.ActivationConfigProperty;
 import javax.ejb.MessageDriven;

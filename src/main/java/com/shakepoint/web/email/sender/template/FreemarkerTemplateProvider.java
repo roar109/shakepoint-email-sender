@@ -1,4 +1,4 @@
-package com.shakepoint.email.sender.template;
+package com.shakepoint.web.email.sender.template;
 
 import java.io.File;
 import java.io.IOException;
@@ -12,9 +12,8 @@ import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
 import javax.inject.Inject;
 
+import com.shakepoint.web.email.sender.template.exception.TemplateNotFoundException;
 import org.apache.log4j.Logger;
-
-import com.shakepoint.email.sender.template.exception.TemplateNotFoundException;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;

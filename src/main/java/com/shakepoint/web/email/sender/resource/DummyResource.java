@@ -1,4 +1,4 @@
-package com.shakepoint.email.sender.resource;
+package com.shakepoint.web.email.sender.resource;
 
 import java.util.HashMap;
 import java.util.Map;

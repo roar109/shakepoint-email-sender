@@ -1,4 +1,4 @@
-package com.shakepoint.email.sender.template.exception;
+package com.shakepoint.web.email.sender.template.exception;
 
 public class TemplateNotFoundException extends Exception {
 

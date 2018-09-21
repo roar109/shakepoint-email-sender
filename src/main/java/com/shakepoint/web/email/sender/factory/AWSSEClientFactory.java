@@ -1,4 +1,4 @@
-package com.shakepoint.email.sender.factory;
+package com.shakepoint.web.email.sender.factory;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Produces;

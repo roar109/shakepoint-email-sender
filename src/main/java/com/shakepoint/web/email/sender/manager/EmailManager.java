@@ -1,13 +1,13 @@
-package com.shakepoint.email.sender.manager;
+package com.shakepoint.web.email.sender.manager;
 
 import javax.inject.Inject;
 
+import com.shakepoint.web.email.sender.template.TemplateProvider;
 import org.apache.log4j.Logger;
 
 import com.google.gson.Gson;
 import com.shakepoint.email.model.Email;
-import com.shakepoint.email.sender.client.ClientProvider;
-import com.shakepoint.email.sender.template.TemplateProvider;
+import com.shakepoint.web.email.sender.client.ClientProvider;
 
 public class EmailManager {
 
