@@ -23,6 +23,9 @@ public class SESClientProvider implements ClientProvider {
     private Logger log;
 
     public void send(final String to, final String subject, final String body) {
+        log.info(to);
+        log.info(subject);
+        log.info(body);
         try{
             final SendEmailRequest request = new SendEmailRequest()
                     .withDestination(
