@@ -23,26 +23,31 @@ public class SESClientProvider implements ClientProvider {
     private Logger log;
 
     public void send(final String to, final String subject, final String body) {
-        final SendEmailRequest request = new SendEmailRequest()
-                .withDestination(
-                        new Destination().withToAddresses(to))
-                .withMessage(new Message()
-                        .withBody(new Body()
-                                .withHtml(new Content()
-                                        .withCharset("UTF-8")
-                                        .withData(body)
-                                )
-                        )
-                        .withSubject(new Content()
-                                .withCharset("UTF-8").withData(subject)
-                        )
-                )
-                .withSource(FROM)
-                .withReplyToAddresses(FROM);
-        SendEmailResult result = awsService.sendEmail(request);
-        System.out.println("-------------- Email details -----------------");
-        System.out.println((String.format("Email ID: %s", result.getMessageId()));
-        ResponseMetadata responseMetadata = result.getSdkResponseMetadata();
-        System.out.println((String.format("%s", responseMetadata.getRequestId()));
+        try{
+            final SendEmailRequest request = new SendEmailRequest()
+                    .withDestination(
+                            new Destination().withToAddresses(to))
+                    .withMessage(new Message()
+                            .withBody(new Body()
+                                    .withHtml(new Content()
+                                            .withCharset("UTF-8")
+                                            .withData(body)
+                                    )
+                            )
+                            .withSubject(new Content()
+                                    .withCharset("UTF-8").withData(subject)
+                            )
+                    )
+                    .withSource(FROM)
+                    .withReplyToAddresses(FROM);
+            SendEmailResult result = awsService.sendEmail(request);
+            log.info("-------------- Email details -----------------");
+            log.info(String.format("Email ID: %s", result.getMessageId()));
+            ResponseMetadata responseMetadata = result.getSdkResponseMetadata();
+            log.info(String.format("%s", responseMetadata.getRequestId()));
+        }catch(Exception ex){
+            log.error("Could not send email", ex);
+        }
+
     }
 }
