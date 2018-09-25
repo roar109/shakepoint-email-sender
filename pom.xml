@@ -62,9 +62,8 @@
         <dependency>
             <groupId>com.amazonaws</groupId>
             <artifactId>aws-java-sdk</artifactId>
-            <version>1.11.98</version>
+            <version>1.11.414</version>
         </dependency>
-
 
         <dependency>
             <groupId>com.github.roar109</groupId>
