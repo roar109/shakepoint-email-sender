@@ -23,9 +23,6 @@ public class SESClientProvider implements ClientProvider {
     private Logger log;
 
     public void send(final String to, final String subject, final String body) {
-        log.info(to);
-        log.info(subject);
-        log.info(body);
         try{
             final SendEmailRequest request = new SendEmailRequest()
                     .withDestination(
@@ -43,11 +40,7 @@ public class SESClientProvider implements ClientProvider {
                     )
                     .withSource(FROM)
                     .withReplyToAddresses(FROM);
-            SendEmailResult result = awsService.sendEmail(request);
-            log.info("-------------- Email details -----------------");
-            log.info(String.format("Email ID: %s", result.getMessageId()));
-            ResponseMetadata responseMetadata = result.getSdkResponseMetadata();
-            log.info(String.format("%s", responseMetadata.getRequestId()));
+            awsService.sendEmail(request);
         }catch(Exception ex){
             log.error("Could not send email", ex);
         }

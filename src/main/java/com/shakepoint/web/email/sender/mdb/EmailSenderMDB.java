@@ -29,7 +29,6 @@ public class EmailSenderMDB implements MessageListener {
     private Logger log;
 
     public void onMessage(Message message) {
-        log.info(message);
         emailManager.send(JmsUtils.getText(message));
     }
 
